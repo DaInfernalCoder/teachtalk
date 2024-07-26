@@ -1,0 +1,3 @@
+either send ai messages to front end or send the individual chunks out one by one 
+right now, the stream text in the gpt integration is pushing everything out at once instead of 
+streaming the response word by word
