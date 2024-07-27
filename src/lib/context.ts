@@ -1,7 +1,6 @@
 import { Pinecone } from "@pinecone-database/pinecone";
 import { convertToAscii } from "./utils";
 import { getEmbeddings } from "./embeddings";
-import { DEV_CLIENT_PAGES_MANIFEST } from "next/dist/shared/lib/constants";
 
 export async function getMatchesFromEmbeddings(
   embeddings: number[],

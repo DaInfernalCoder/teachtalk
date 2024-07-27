@@ -2,7 +2,7 @@ import { getContext } from "@/lib/context";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import { createOpenAI } from "@ai-sdk/openai";
-import { Message, StreamingTextResponse, streamText } from "ai";
+import { Message, streamText } from "ai";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
@@ -33,9 +33,9 @@ export async function POST(req: Request) {
     }
 
     const lastMessage = messages[messages.length - 1];
-    console.log("last message", lastMessage.text);
+    console.log("last message", lastMessage);
 
-    const context = await getContext(lastMessage.text, fileKey);
+    const context = await getContext(lastMessage, fileKey);
     console.log("Context received:", context);
     
     const systemMessage = {
@@ -64,10 +64,9 @@ export async function POST(req: Request) {
       ],
     });
 
-    const result = stream.text;
 
     // Return the streaming response
-    return NextResponse.json(result);
+    return stream.toAIStreamResponse()
 
   } catch (error) {
     console.error("Error in route.ts (app/api/chat) with the ai stream:", error);
