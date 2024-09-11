@@ -1,0 +1,20 @@
+{
+  "uuid": "b9619857-05c9-40af-8da9-b7be15f5f97f",
+  "name": "Removing Message Loading Delay",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-04T14:06:39.002710+00:00",
+  "updated_at": "2024-08-04T14:13:45.720922+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "a5ec33f3-18ec-4015-92fe-2f3fc455ea1e",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

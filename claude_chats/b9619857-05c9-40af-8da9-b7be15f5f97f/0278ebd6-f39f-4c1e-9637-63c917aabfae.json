@@ -1,0 +1,12 @@
+{
+  "uuid": "0278ebd6-f39f-4c1e-9637-63c917aabfae",
+  "text": "Can you remove the isLoading delay that causes messages to take a while to show",
+  "sender": "human",
+  "index": 0,
+  "created_at": "2024-08-04T14:07:06.769083+00:00",
+  "updated_at": "2024-08-04T14:07:06.769083+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "00000000-0000-4000-8000-000000000000"
+}

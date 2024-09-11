@@ -1,0 +1,12 @@
+{
+  "uuid": "46245197-124f-4bf6-b573-6adbd0be7094",
+  "text": "any bugs in my code?",
+  "sender": "human",
+  "index": 0,
+  "created_at": "2024-08-03T19:51:03.029172+00:00",
+  "updated_at": "2024-08-03T19:51:03.029172+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "00000000-0000-4000-8000-000000000000"
+}

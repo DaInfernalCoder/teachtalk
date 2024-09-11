@@ -1,0 +1,12 @@
+{
+  "uuid": "dbba9fd1-20f0-486b-9b8f-c7926e677408",
+  "text": "error with on start \n\nObject literal may only specify known properties, and 'onStart' does not exist in type 'CallSettings & Prompt & { model: LanguageModelV1; tools?: Record<string, CoreTool<any, any>> | undefined; toolChoice?: CoreToolChoice<...> | undefined; experimental_telemetry?: TelemetrySettings | undefined; experimental_toolCallStreaming?: boolean | undefined; onFinish?: ((event: { ...; }) => void | Promise<...>) |...'.",
+  "sender": "human",
+  "index": 4,
+  "created_at": "2024-08-03T20:59:02.472058+00:00",
+  "updated_at": "2024-08-03T20:59:02.472058+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "244c5629-584b-417c-8ba5-865e096d5d7e"
+}

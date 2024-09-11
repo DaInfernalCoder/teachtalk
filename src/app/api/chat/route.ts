@@ -1,6 +1,7 @@
+import { text } from "drizzle-orm/pg-core";
 import { getContext } from "@/lib/context";
 import { db } from "@/lib/db";
-import { chats } from "@/lib/db/schema";
+import { chats, messages as _messages } from "@/lib/db/schema";
 import { createOpenAI } from "@ai-sdk/openai";
 import { Message, streamText } from "ai";
 import { eq } from "drizzle-orm";
@@ -18,26 +19,35 @@ export async function POST(req: Request) {
   try {
     const { messages, chatId } = await req.json();
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
-    
+
     console.log(`Searching for chat with ID: ${chatId}`);
     console.log(`Found ${_chats.length} chats`);
-
-    
 
     const fileKey = _chats[0].fileKey;
     if (!fileKey) {
       throw new Error("api/chat/route.ts, No fileKey found");
-    }
-    else{ 
+    } else {
       console.log("fileKey found", fileKey);
     }
 
     const lastMessage = messages[messages.length - 1];
-    console.log("last message", lastMessage);
+    console.log("last message", lastMessage.content.toString());
 
-    const context = await getContext(lastMessage, fileKey);
-    console.log("Context received:", context);
-    
+    // Save user message to the database
+    try {
+      await db.insert(_messages).values({
+        chatId, 
+        content: lastMessage.content, 
+        role: "user"
+      });
+      console.log("User message saved into db");
+    } catch (error) {
+      console.error("Error saving user message to db:", error);
+    }
+
+    const context = await getContext(lastMessage.content.toString(), fileKey);
+    console.log("Context received:", context.toString());
+
     const systemMessage = {
       role: "system",
       content: `AI assistant is a brand new, powerful, human-like artificial intelligence.
@@ -56,20 +66,41 @@ export async function POST(req: Request) {
       `,
     };
 
-    const stream = await streamText({
+    let aiMessageContent = '';
+
+    const response = await streamText({
       model,
       messages: [
-        systemMessage, 
-        ...messages.filter((message: Message) => message.role === "user")
+        systemMessage,
+        ...messages.filter((message: Message) => message.role === "user"),
       ],
+      onFinish: async (event: any) => {
+        const completion = event.completion;
+        aiMessageContent = completion;
+        // Save AI message to the database
+        try {
+          await db.insert(_messages).values({
+            chatId, 
+            content: completion, 
+            role: "system"
+          });
+          console.log("AI message saved into db");
+        } catch (error) {
+          console.error("Error saving AI message to db:", error);
+        }
+      }
     });
-
-
-    // Return the streaming response
-    return stream.toAIStreamResponse()
+    
+    return response.toAIStreamResponse();
 
   } catch (error) {
-    console.error("Error in route.ts (app/api/chat) with the ai stream:", error);
-    return NextResponse.json({ error: "An error occurred with ai stream" }, { status: 500 });
+    console.error(
+      "Error in route.ts (app/api/chat) with the ai stream:",
+      error
+    );
+    return NextResponse.json(
+      { error: "An error occurred with ai stream" },
+      { status: 500 }
+    );
   }
 }

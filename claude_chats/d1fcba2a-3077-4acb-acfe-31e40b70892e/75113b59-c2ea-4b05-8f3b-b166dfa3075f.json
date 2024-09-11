@@ -1,0 +1,12 @@
+{
+  "uuid": "75113b59-c2ea-4b05-8f3b-b166dfa3075f",
+  "text": "why does it have a delay loading the messages",
+  "sender": "human",
+  "index": 0,
+  "created_at": "2024-08-03T21:02:22.835319+00:00",
+  "updated_at": "2024-08-03T21:02:22.835319+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "00000000-0000-4000-8000-000000000000"
+}

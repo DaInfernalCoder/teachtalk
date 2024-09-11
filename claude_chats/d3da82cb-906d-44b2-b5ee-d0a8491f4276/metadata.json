@@ -1,0 +1,20 @@
+{
+  "uuid": "d3da82cb-906d-44b2-b5ee-d0a8491f4276",
+  "name": "Implementing Text-to-Speech in Chat Interface",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-03T19:57:23.590556+00:00",
+  "updated_at": "2024-08-03T19:57:38.148367+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "3a66ae22-2ef8-4aec-98d2-a0a8412c5c17",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

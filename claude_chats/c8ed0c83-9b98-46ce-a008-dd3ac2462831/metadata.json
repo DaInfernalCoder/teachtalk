@@ -1,0 +1,20 @@
+{
+  "uuid": "c8ed0c83-9b98-46ce-a008-dd3ac2462831",
+  "name": "Code Review for Potential Bugs",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-03T19:50:46.529662+00:00",
+  "updated_at": "2024-08-03T19:51:05.605484+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "d43a463f-38db-47fe-be5b-8df2a65ce365",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

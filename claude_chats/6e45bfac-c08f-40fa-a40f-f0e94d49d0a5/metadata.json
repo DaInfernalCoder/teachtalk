@@ -1,0 +1,20 @@
+{
+  "uuid": "6e45bfac-c08f-40fa-a40f-f0e94d49d0a5",
+  "name": "Fixing Weird Fonts in Code",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-03T20:11:07.936518+00:00",
+  "updated_at": "2024-08-03T20:11:26.912654+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "37c8899f-af7e-485a-9c31-4a571ff6a399",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

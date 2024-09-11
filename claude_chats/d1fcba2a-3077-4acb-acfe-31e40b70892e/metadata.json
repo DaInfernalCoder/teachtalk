@@ -1,0 +1,20 @@
+{
+  "uuid": "d1fcba2a-3077-4acb-acfe-31e40b70892e",
+  "name": "Troubleshooting Message Loading Delays",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-03T21:01:54.461644+00:00",
+  "updated_at": "2024-08-03T21:02:26.024642+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "7f961308-eb80-49cb-9cf2-3da64a6c0ff5",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

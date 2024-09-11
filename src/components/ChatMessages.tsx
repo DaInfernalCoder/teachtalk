@@ -4,16 +4,27 @@ import React, { useState, useRef, useEffect } from "react";
 import { Input } from "./ui/input";
 import { Send } from "lucide-react";
 import { Button } from "./ui/button";
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import MessageList from "./MessageList";
-import {openai} from '@ai-sdk/openai'
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 type Props = { chatId: number };
 
-const ChatMessages = (props: Props) => {
+const ChatMessages = ({ chatId }: Props) => {
+  const {data, isLoading} = useQuery({
+    queryKey: ["chat", chatId],
+    queryFn: async () => {
+      const response = await axios.post<Message[]>(`/api/get-messages`, {chatId})
+      return response.data
+    }
+  })
+
+
   const { input, handleInputChange, handleSubmit, messages } = useChat({
     api: "/api/chat",
-    body: { chatId: props.chatId },
+    body: { chatId },
+    initialMessages: data || [],
   });
   
   //scroll effect in message list
@@ -39,7 +50,7 @@ const ChatMessages = (props: Props) => {
       </div>
 
       {/* message list */}
-      <MessageList messages={messages} />
+      <MessageList messages={messages}/>
       <form
         onSubmit={handleSubmit}
         className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"

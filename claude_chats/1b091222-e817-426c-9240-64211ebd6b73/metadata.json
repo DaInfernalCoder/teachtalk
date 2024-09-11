@@ -1,0 +1,20 @@
+{
+  "uuid": "1b091222-e817-426c-9240-64211ebd6b73",
+  "name": "Fixing Neon Database Message Saving",
+  "summary": "",
+  "model": null,
+  "created_at": "2024-08-03T20:51:15.070452+00:00",
+  "updated_at": "2024-08-03T21:12:55.472288+00:00",
+  "settings": {
+    "preview_feature_uses_artifacts": true,
+    "preview_feature_uses_latex": null,
+    "preview_feature_uses_citations": null
+  },
+  "is_starred": false,
+  "project_uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+  "current_leaf_message_uuid": "57554a88-001c-4274-ab6f-9114753bec3b",
+  "project": {
+    "uuid": "01dd2482-ee2f-41e3-957e-24d70f57984e",
+    "name": "TeachTalk"
+  }
+}

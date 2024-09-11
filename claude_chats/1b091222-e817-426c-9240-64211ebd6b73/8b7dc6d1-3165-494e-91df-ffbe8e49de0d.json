@@ -1,0 +1,12 @@
+{
+  "uuid": "8b7dc6d1-3165-494e-91df-ffbe8e49de0d",
+  "text": "Property 'lastmessage' does not exist on type 'DefaultStreamTextResult<Record<string, CoreTool<any, any>>>'.",
+  "sender": "human",
+  "index": 6,
+  "created_at": "2024-08-03T21:12:55.472288+00:00",
+  "updated_at": "2024-08-03T21:12:55.472288+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "c9a533ea-8df6-4fad-91bd-a241d690b3e8"
+}

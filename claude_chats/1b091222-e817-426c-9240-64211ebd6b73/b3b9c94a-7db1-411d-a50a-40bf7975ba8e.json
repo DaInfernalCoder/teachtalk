@@ -1,0 +1,12 @@
+{
+  "uuid": "b3b9c94a-7db1-411d-a50a-40bf7975ba8e",
+  "text": "how to fix functionality to actually save messages in the neon db",
+  "sender": "human",
+  "index": 0,
+  "created_at": "2024-08-03T20:51:35.339548+00:00",
+  "updated_at": "2024-08-03T20:51:35.339548+00:00",
+  "truncated": false,
+  "attachments": [],
+  "files": [],
+  "parent_message_uuid": "00000000-0000-4000-8000-000000000000"
+}

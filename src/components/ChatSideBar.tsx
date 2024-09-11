@@ -15,7 +15,17 @@ type Props = {
 
 const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
   const [loading, setLoading] = React.useState(false);
-
+  const handleSubscription = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/stripe");
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error("error subscribing", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="w-full h-full flex flex-col p-4 text-gray-200 bg-gray-900">
       <Link href="/">
@@ -30,10 +40,13 @@ const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
           {chats.map((chat) => (
             <Link key={chat.id} href={`/chat/${chat.id}`}>
               <div
-                className={cn("rounded-lg p-3 text-slate-300 flex items-center", {
-                  "bg-blue-600 text-white": chat.id === chatId,
-                  "hover:text-white": chat.id !== chatId,
-                })}
+                className={cn(
+                  "rounded-lg p-3 text-slate-300 flex items-center",
+                  {
+                    "bg-blue-600 text-white": chat.id === chatId,
+                    "hover:text-white": chat.id !== chatId,
+                  }
+                )}
               >
                 <MessageCircle className="mr-2" />
                 <p className="w-full overflow-hidden text-sm truncate whitespace-nowrap text-ellipsis">
@@ -45,11 +58,14 @@ const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
         </div>
       </div>
 
-      <div className="mt-auto"> 
+      <div className="mt-auto">
         <Button className="w-full">
           <Link href="/">Home</Link>
         </Button>
       </div>
+      <Button className="mt-2 text-white bg-slate-700" disabled={loading} onClick = {handleSubscription}>
+        Upgrade to Unlimited!
+      </Button>
     </div>
   );
 };

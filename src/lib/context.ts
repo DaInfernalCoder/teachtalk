@@ -6,20 +6,21 @@ export async function getMatchesFromEmbeddings(
   embeddings: number[],
   fileKey: string
 ) {
-  //Search query for top 5 vectors and return the top 5 vectors
-  const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! });
-  const index = await pc.index("teachtalk");
-
   try {
-    const namespace = convertToAscii(fileKey);
-    const queryResponse = await index.query({
-      vector: embeddings,
+    const client = new Pinecone({
+      apiKey: process.env.PINECONE_API_KEY!,
+    });
+    const pineconeIndex = await client.index("teachtalk");
+    const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+    const queryResult = await namespace.query({
       topK: 5,
+      vector: embeddings,
       includeMetadata: true,
     });
-    return queryResponse.matches || {};
+    return queryResult.matches || [];
   } catch (error) {
-    console.log("error querying embeddings, src/lib/context.ts", error);
+    console.log("error querying embeddings", error);
+    throw error;
   }
 }
 
@@ -30,16 +31,16 @@ export async function getContext(query: string, fileKey: string) {
     fileKey
   );
 
-  const qualifyingDocs = matches?.filter(
+  const qualifyingDocs = matches.filter(
     (match) => match.score && match.score > 0.7
   );
 
-  type MetaData = {
-    text: string; 
+  type Metadata = {
+    text: string;
     pageNumber: number;
-  }
+  };
 
-  let docs = qualifyingDocs?.map(match => (match.metadata as MetaData).text) || [];
-  // 5 vectors joined
+  let docs = qualifyingDocs.map((match) => (match.metadata as Metadata).text);
+  // 5 vectors
   return docs.join("\n").substring(0, 3000);
 }
